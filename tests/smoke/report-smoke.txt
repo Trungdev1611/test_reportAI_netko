@@ -1,0 +1,4 @@
+Smoke data for deploy-report webhook integration.
+
+- project: test_reportAI_netko
+- purpose: trigger workflow and webhook payload checks
