@@ -1,0 +1,18 @@
+#!/usr/bin/env sh
+MSG_FILE="$1"
+MSG=$(cat "$MSG_FILE")
+
+# Không chặn merge/revert mặc định của Git
+printf '%s' "$MSG" | grep -q '^Merge ' && exit 0
+printf '%s' "$MSG" | grep -q '^Revert ' && exit 0
+
+# Khớp logic deploy-report: (đầu dòng hoặc sau khoảng trắng) issue-<số>/
+if ! printf '%s' "$MSG" | grep -qE '(^|[[:space:]])issue-[0-9]+/'; then
+  echo "" >&2
+  echo "❌ Commit message phải chứa định dạng issue-<IID>/ (IID = số issue GitLab)." >&2
+  echo "   Ví dụ:" >&2
+  echo "     issue-4/fix typo" >&2
+  echo "     chore: issue-7/ cập nhật workflow" >&2
+  echo "" >&2
+  exit 1
+fi
