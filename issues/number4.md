@@ -1,2 +1,3 @@
 Finish issue-4
-chạy lại deploy
+chạy lại deploy lần 1
+chạy lại deploy lần 2
