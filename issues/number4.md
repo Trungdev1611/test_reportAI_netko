@@ -4,3 +4,4 @@ chạy lại deploy lần 2
 chạy lại deploy lần 3
 
 finish issue-7
+implement issue-8
