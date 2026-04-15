@@ -13,6 +13,17 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
 
+      - name: Simulate failure by commit message rule
+        run: |
+            MSG="$(git log -1 --pretty=%B)"
+            echo "Commit message: $MSG"
+            if echo "$MSG" | grep -Eqi '(^|[[:space:]])issue-[0-9]+/fail([[:space:]]|$)'; then
+              echo "Simulated failure: matched issue-<id>/fail"
+              exit 1
+            fi
+            echo "Simulated success: no issue-<id>/fail marker"
+
+
       - name: Show commit info
         run: |
           echo "Simulating deploy success for report bot"
