@@ -5,3 +5,6 @@ chạy lại deploy lần 3
 
 finish issue-7
 implement issue-8
+
+update issue-7
+update implement issue-8
